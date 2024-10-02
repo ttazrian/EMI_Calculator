@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">EMI Calculator</string>
+
+    <!-- Add this array for the Spinner -->
+    <string-array name="time_period_units">
+        <item>Months</item>
+        <item>Years</item>
+    </string-array>
+</resources>

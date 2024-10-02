@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/platinum"
+    android:padding="16dp">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="EMI Calculator"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:textColor="@color/dark_slate_gray"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp" />
+
+    <!-- Loan Amount Label -->
+    <TextView
+        android:id="@+id/loanAmountLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Loan Amount"
+        android:textSize="18sp"
+        android:textColor="@color/dark_slate_gray"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Loan Amount Input Field -->
+    <EditText
+        android:id="@+id/loanAmount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Loan Amount"
+        android:background="@drawable/rounded_input"
+        android:inputType="numberDecimal"
+        android:padding="12dp" />
+
+    <!-- Interest Rate Label -->
+    <TextView
+        android:id="@+id/interestRateLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Interest Rate"
+        android:textSize="18sp"
+        android:textColor="@color/dark_slate_gray"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="8dp"/>
+
+    <!-- Interest Rate Input Field -->
+    <EditText
+        android:id="@+id/interestRate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Interest Rate (%)"
+        android:background="@drawable/rounded_input"
+        android:inputType="numberDecimal"
+        android:padding="12dp" />
+
+
+    <!-- Loan Time Period -->
+    <TextView
+        android:id="@+id/timePeriodLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Time Period"
+        android:textSize="18sp"
+        android:textColor="@color/dark_slate_gray"
+        android:layout_marginTop="16dp" />
+
+    <!-- Loan Time Period Input Field -->
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chipGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:singleSelection="true">
+
+    <!-- Time Period Unit Selection (Months or Years) -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipYears"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:checked="true"
+            android:text="Years"
+            app:checkedIconVisible="true"
+            app:chipBackgroundColor="@color/battleship_gray" /> <!-- Default checked -->
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipMonths"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checkable="true"
+            android:text="Months"
+            app:checkedIconVisible="true"
+            app:chipBackgroundColor="@color/battleship_gray" />
+
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <EditText
+        android:id="@+id/timePeriod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Enter Time Period"
+        android:background="@drawable/rounded_input"
+        android:inputType="numberDecimal"
+        android:padding="12dp" />
+
+    <!-- Payment Frequency Selection -->
+    <TextView
+        android:id="@+id/paymentFreqLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Payment Frequency"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:layout_marginTop="16dp" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/paymentFrequencyGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:singleSelection="true"
+        app:checkedIconVisible="true">
+
+        <!-- Monthly Chip -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipMonthly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:chipBackgroundColor="@color/battleship_gray"
+            android:text="Monthly"
+            android:checkable="true"
+            android:checked="true"
+            app:checkedIconVisible="true"/> <!-- Default checked -->
+
+        <!-- Bi-weekly Chip -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipBiWeekly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:chipBackgroundColor="@color/battleship_gray"
+            android:text="Bi-weekly"
+            android:checkable="true"
+            app:checkedIconVisible="true"/>
+
+        <!-- Weekly Chip -->
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chipWeekly"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:chipBackgroundColor="@color/battleship_gray"
+            android:text="Weekly"
+            android:checkable="true"
+            app:checkedIconVisible="true"/>
+    </com.google.android.material.chip.ChipGroup>
+
+    <!-- Calculate Button -->
+    <Button
+        android:id="@+id/calculateButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Calculate"
+        android:textSize="20sp"
+        android:layout_marginTop="20dp"
+        android:theme="@style/Widget.AppCompat.Button" />
+
+    <!-- EMI Result -->
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="1dp">
+
+        <TextView
+            android:id="@+id/result"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your EMI will appear here"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/dark_slate_gray"
+            android:gravity="center"
+            android:padding="16dp" />
+    </androidx.cardview.widget.CardView>
+
+</LinearLayout>
