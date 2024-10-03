@@ -76,12 +76,12 @@
     <!-- Loan Time Period Input Field -->
 
     <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chipGroup"
+        android:id="@+id/chipSelection"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:singleSelection="true">
 
-    <!-- Time Period Unit Selection (Months or Years) -->
+    <!-- Time Period Selection (Months) -->
         <com.google.android.material.chip.Chip
             android:id="@+id/chipYears"
             android:layout_width="wrap_content"
@@ -92,6 +92,7 @@
             app:checkedIconVisible="true"
             app:chipBackgroundColor="@color/battleship_gray" /> <!-- Default checked -->
 
+        <!-- Time Period Selection (Years) -->
         <com.google.android.material.chip.Chip
             android:id="@+id/chipMonths"
             android:layout_width="wrap_content"
@@ -100,10 +101,9 @@
             android:text="Months"
             app:checkedIconVisible="true"
             app:chipBackgroundColor="@color/battleship_gray" />
-
-
     </com.google.android.material.chip.ChipGroup>
 
+    <!-- Time Period Input field -->
     <EditText
         android:id="@+id/timePeriod"
         android:layout_width="match_parent"
@@ -113,7 +113,7 @@
         android:inputType="numberDecimal"
         android:padding="12dp" />
 
-    <!-- Payment Frequency Selection -->
+    <!-- Payment Frequency Selection Label -->
     <TextView
         android:id="@+id/paymentFreqLabel"
         android:layout_width="wrap_content"
@@ -123,6 +123,7 @@
         android:textColor="@color/black"
         android:layout_marginTop="16dp" />
 
+    <!-- Payment Frequency Selection Options -->
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/paymentFrequencyGroup"
         android:layout_width="wrap_content"

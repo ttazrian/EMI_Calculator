@@ -11,8 +11,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
 
+
+    //declaring UI components
     EditText loanAmountInput, interestRateInput, timePeriodInput;
-    ChipGroup chipGroup, paymentFrequencyGroup;
+    ChipGroup chipSelection, paymentFrequencyGroup;
     Chip chipMonths, chipYears, chipMonthly, chipBiWeekly, chipWeekly;
     Button calculateButton;
     TextView resultTextView;
@@ -22,11 +24,11 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        // Link UI elements to variables
+        // Links each UI element to variables to get info and input
         loanAmountInput = findViewById(R.id.loanAmount);
         interestRateInput = findViewById(R.id.interestRate);
         timePeriodInput = findViewById(R.id.timePeriod);
-        chipGroup = findViewById(R.id.chipGroup);
+        chipSelection = findViewById(R.id.chipSelection);
         paymentFrequencyGroup = findViewById(R.id.paymentFrequencyGroup);
         chipMonths = findViewById(R.id.chipMonths);
         chipYears = findViewById(R.id.chipYears);
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
         calculateButton = findViewById(R.id.calculateButton);
         resultTextView = findViewById(R.id.result);
 
-        // Set OnClickListener for the calculate button
+        // Calculate button -- setting on click listener
         calculateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,14 +47,14 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    // Method to calculate the EMI
+    // Calculate the EMI
     private void calculateEMI() {
-        // Get user input and convert to required data types
+        // Get user input and convert to data types as required
         String loanAmountStr = loanAmountInput.getText().toString();
         String interestRateStr = interestRateInput.getText().toString();
         String timePeriodStr = timePeriodInput.getText().toString();
 
-        // Validate input
+        // Validate input-- ensure all values are there
         if (loanAmountStr.isEmpty() || interestRateStr.isEmpty() || timePeriodStr.isEmpty()) {
             resultTextView.setText("Please fill in all fields.");
             return;
@@ -61,14 +63,14 @@ public class MainActivity extends AppCompatActivity {
         // Convert inputs to numerical values
         double loanAmount = Double.parseDouble(loanAmountStr); // Principal Loan Amount
         double annualInterestRate = Double.parseDouble(interestRateStr); // Annual Interest Rate in percentage
-        double timePeriod = Double.parseDouble(timePeriodStr); // Loan tenure in either months or years
+        double timePeriod = Double.parseDouble(timePeriodStr); // Length of loan period in either months or years
 
         // Check which unit is selected (Months or Years)
         if (chipYears.isChecked()) {
             timePeriod = timePeriod * 12; // Convert years to months if "Years" is selected
         }
 
-        // Default payment frequency is monthly
+        // Default payment frequency is set to monthly
         int paymentsPerYear = 12;
 
         // Check which payment frequency is selected (Monthly, Bi-weekly, Weekly)
@@ -82,11 +84,11 @@ public class MainActivity extends AppCompatActivity {
         double interestRatePerPayment = (annualInterestRate / paymentsPerYear) / 100;
         double totalPayments = timePeriod * (paymentsPerYear / 12); // Adjust total payments based on the frequency
 
-        // EMI Calculation using formula adjusted for payment frequency
+        // EMI Calculation using formula (accounts for selected payment freuency)
         double emi = (loanAmount * interestRatePerPayment * Math.pow(1 + interestRatePerPayment, totalPayments))
                 / (Math.pow(1 + interestRatePerPayment, totalPayments) - 1);
 
-        // Display the result
+        // Print adn display the result
         resultTextView.setText(String.format("Your EMI is: $%.2f (%s)", emi, getPaymentFrequencyText()));
     }
 
